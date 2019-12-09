@@ -58,7 +58,7 @@ namespace Auto_clicker
         public static void SwitchOff()
         {
             if (_isOn) _isOn = false;
-            Console.WriteLine("Switched off");
+            //Console.WriteLine("Switched off");
         }
 
         public static bool OnStatus()
@@ -72,7 +72,7 @@ namespace Auto_clicker
             TimePoint newP = new TimePoint(_x, _y, _t);
             clPattern.Add(newP);
             _pattern_duration += _t;
-            Console.WriteLine("Point added: " + _x + ", " + _y + ", " + _t);
+            //Console.WriteLine("Point added: " + _x + ", " + _y + ", " + _t);
         }
 
         public static void ClearPattern()
@@ -84,10 +84,10 @@ namespace Auto_clicker
         public static void ClickOnce()
         {
 
-            Console.WriteLine("Clicking once, length is : " + clPattern.Count() + "... duration = " + _pattern_duration);
+            //Console.WriteLine("Clicking once, length is : " + clPattern.Count() + "... duration = " + _pattern_duration);
             if (clPattern.Count() > 0)
             {                
-                Console.WriteLine("0 point");
+                //Console.WriteLine("0 point");
                 MouseSimulator.LClick(clPattern[0].x, clPattern[0].y);
 
                 Timer _tmr = new Timer();
@@ -99,7 +99,7 @@ namespace Auto_clicker
                 {
                     if (_isOn && i < clPattern.Count())
                     {
-                        Console.WriteLine(i + " point");
+                        //Console.WriteLine(i + " point");
                         MouseSimulator.LClick(clPattern[i].x, clPattern[i].y);
                         _tmr.Interval = clPattern[i].t;
                         _tmr.Enabled = true;
@@ -108,8 +108,8 @@ namespace Auto_clicker
                     else 
                     {
 
-                        if (!_isOn) Console.WriteLine("Pattern switched off");
-                        if (i >= clPattern.Count()) Console.WriteLine("Clicked to the finish");
+                       // if (!_isOn) Console.WriteLine("Pattern switched off");
+                        //if (i >= clPattern.Count()) Console.WriteLine("Clicked to the finish");
                         
                         //SwitchOff();
                         _tmr.Stop();                      
@@ -152,26 +152,30 @@ namespace Auto_clicker
                 _tmr.Interval = _period + _pattern_duration;
                 _tmr.AutoReset = false;
 
-                int i = 1;
+                int i = 2;
                 _tmr.Elapsed += (Object source, ElapsedEventArgs e) =>
                 {
-                    i++;
-                    Console.WriteLine(i + " repeating of pattern, out of " + count);
-                    ClickOnce();
+                    
+                    //Console.WriteLine(i + " repeating of pattern, out of " + count);                    
 
                     if (_isOn)
                     {
                         if (i < count)
                         {
+
+                            ClickOnce();
                             _tmr.Enabled = true;
                         }
-                        else
+                        else if (i == count)
                         {
-                            Console.WriteLine("Clicking is done");
+                            ClickOnce();
+                            //Console.WriteLine("Clicking is done");
                             _tmr.Stop();
                         }
+                        else SwitchOff();
                     }
-                    else Console.WriteLine("Clicking stopped in Click()");
+                    i++;
+                    //else Console.WriteLine("Clicking stopped in Click()");
                 };
                 _tmr.Start();
             }

@@ -38,6 +38,7 @@
             this.Xpos = new System.Windows.Forms.TextBox();
             this.Button_clear = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Repeat_count = new System.Windows.Forms.NumericUpDown();
             this.NRepeatCheck = new System.Windows.Forms.CheckBox();
             this.RepeatCheck = new System.Windows.Forms.CheckBox();
             this.Button_start = new System.Windows.Forms.Button();
@@ -60,12 +61,11 @@
             this.Delay_h = new System.Windows.Forms.TextBox();
             this.Button_ClearList = new System.Windows.Forms.Button();
             this.MessageWindow = new System.Windows.Forms.ListBox();
-            this.Repeat_count = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Repeat_count)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Repeat_count)).BeginInit();
             this.SuspendLayout();
             // 
             // Button_addPoint
@@ -174,6 +174,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Clicking parameters";
             // 
+            // Repeat_count
+            // 
+            this.Repeat_count.Location = new System.Drawing.Point(287, 31);
+            this.Repeat_count.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Repeat_count.Name = "Repeat_count";
+            this.Repeat_count.Size = new System.Drawing.Size(56, 20);
+            this.Repeat_count.TabIndex = 2;
+            this.Repeat_count.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Repeat_count.ValueChanged += new System.EventHandler(this.Repeat_count_ValueChanged);
+            // 
             // NRepeatCheck
             // 
             this.NRepeatCheck.AutoSize = true;
@@ -206,7 +224,7 @@
             this.Button_start.Name = "Button_start";
             this.Button_start.Size = new System.Drawing.Size(159, 83);
             this.Button_start.TabIndex = 1;
-            this.Button_start.Text = "Start";
+            this.Button_start.Text = "Start (F6)";
             this.Button_start.UseVisualStyleBackColor = true;
             this.Button_start.Click += new System.EventHandler(this.Button_start_Click);
             // 
@@ -217,7 +235,7 @@
             this.Button_stop.Name = "Button_stop";
             this.Button_stop.Size = new System.Drawing.Size(159, 83);
             this.Button_stop.TabIndex = 5;
-            this.Button_stop.Text = "Stop";
+            this.Button_stop.Text = "Stop (F6)";
             this.Button_stop.UseVisualStyleBackColor = true;
             this.Button_stop.Click += new System.EventHandler(this.Button_stop_Click);
             // 
@@ -399,19 +417,6 @@
             this.MessageWindow.Size = new System.Drawing.Size(182, 381);
             this.MessageWindow.TabIndex = 9;
             // 
-            // Repeat_count
-            // 
-            this.Repeat_count.Location = new System.Drawing.Point(287, 31);
-            this.Repeat_count.Name = "Repeat_count";
-            this.Repeat_count.Size = new System.Drawing.Size(56, 20);
-            this.Repeat_count.TabIndex = 2;
-            this.Repeat_count.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Repeat_count.ValueChanged += new System.EventHandler(this.Repeat_count_ValueChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,11 +437,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Repeat_count)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Repeat_count)).EndInit();
             this.ResumeLayout(false);
 
         }
