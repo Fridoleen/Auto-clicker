@@ -1,0 +1,9 @@
+C:\Users\Gunman\source\repos\Auto Clicker\bin\Debug\Auto clicker.exe.config
+C:\Users\Gunman\source\repos\Auto Clicker\bin\Debug\Auto clicker.exe
+C:\Users\Gunman\source\repos\Auto Clicker\bin\Debug\Auto clicker.pdb
+C:\Users\Gunman\source\repos\Auto Clicker\obj\Debug\Auto clicker.csprojAssemblyReference.cache
+C:\Users\Gunman\source\repos\Auto Clicker\obj\Debug\Auto_clicker.Form1.resources
+C:\Users\Gunman\source\repos\Auto Clicker\obj\Debug\Auto_clicker.Properties.Resources.resources
+C:\Users\Gunman\source\repos\Auto Clicker\obj\Debug\Auto clicker.csproj.GenerateResource.cache
+C:\Users\Gunman\source\repos\Auto Clicker\obj\Debug\Auto clicker.exe
+C:\Users\Gunman\source\repos\Auto Clicker\obj\Debug\Auto clicker.pdb
