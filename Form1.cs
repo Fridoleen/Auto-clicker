@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Auto_clicker
 {
@@ -17,7 +13,7 @@ namespace Auto_clicker
             InitializeComponent();
             KeyboardInterceptor.OnClick += KeyboardClicked;
 
-        }
+        }        
 
         private void AddPoint_Click(object sender, EventArgs e)
         {
@@ -53,11 +49,11 @@ namespace Auto_clicker
 
         private void KeyboardClicked(int key)
         {
-            if(key == 117)
+            if (key == 117)
             {
-                if(! ClickPattern.OnStatus())
+                if (Button_start.Enabled)
                 {                 
-                    Start();
+                    Start();                    
                 }
                 else
                 {                    
@@ -219,47 +215,6 @@ namespace Auto_clicker
             RepeatCheck.Checked = false;
             NRepeatCheck.Checked = true;
         }
-        
-        private void Start()
-        {
-            MessageWindow.Items.Add("Pattern clicking started");
-            Console.WriteLine("Pattern started");
-            ClickPattern.SwitchOn();
-            int interval = Int32.Parse(Interval_h.Text) * 60 * 60 * 1000 +
-                Int32.Parse(Interval_m.Text) * 60 * 1000 +
-                Int32.Parse(Interval_s.Text) * 1000 +
-                Int32.Parse(Interval_ms.Text);
-            int delay = Int32.Parse(Delay_h.Text) * 60 * 60 * 1000 +
-                Int32.Parse(Delay_m.Text) * 60 * 1000 +
-                Int32.Parse(Delay_s.Text) * 1000;
-            ClickPattern.SetInterval(interval);
-
-            Timer _tmr = new Timer();
-            _tmr.Interval = delay;
-            _tmr.Tick += (Object sender, EventArgs e) =>
-            {
-                if (ClickPattern.OnStatus())
-                { 
-                    if (RepeatCheck.Checked)
-                    {
-                        ClickPattern.Click();
-                    }
-                    else
-                    {
-                        ClickPattern.Click(Decimal.ToInt32(Repeat_count.Value));
-                    }
-                }
-                _tmr.Stop();
-            };
-            _tmr.Start();
-        }
-
-        private void Stop()
-        {
-            MessageWindow.Items.Add("Pattern clicking stopped");
-            Console.WriteLine("Pattern stopped");
-            ClickPattern.SwitchOff();
-        }
 
         private void Button_start_Click(object sender, EventArgs e)
         {
@@ -274,7 +229,98 @@ namespace Auto_clicker
         private void NRepeatCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (NRepeatCheck.Checked) RepeatCheck.Checked = false;
+
             else RepeatCheck.Checked = true;
         }
+
+        public void Start()
+        {
+            MessageWindow.Items.Add("Pattern clicking started");
+            //Console.WriteLine("Pattern started");
+
+            Button_start.Enabled = false;
+
+            int interval = Int32.Parse(Interval_h.Text) * 60 * 60 * 1000 +
+                Int32.Parse(Interval_m.Text) * 60 * 1000 +
+                Int32.Parse(Interval_s.Text) * 1000 +
+                Int32.Parse(Interval_ms.Text);
+
+            int delay = Int32.Parse(Delay_h.Text) * 60 * 60 * 1000 +
+                Int32.Parse(Delay_m.Text) * 60 * 1000 +
+                Int32.Parse(Delay_s.Text) * 1000;
+
+            ClickPattern.Period = interval;
+            // Console.WriteLine(delay + " miliseconds");
+
+            CancellationTokenSource source = new CancellationTokenSource();
+            CancellationToken token = source.Token;
+
+            KeyboardInterceptor.OnClick += (key =>
+            {
+                if (key == 117)
+                {
+                    Console.WriteLine("Process stopped during initial delay");
+                    source.Cancel();
+                }
+            });
+
+            try { 
+                    Task.Delay(delay).ContinueWith(x =>
+                    {
+                        if (RepeatCheck.Checked)
+                        {
+                            Console.WriteLine("Unlimited clicking started");
+                            
+                            ClickPattern.Click();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Limited clicking started");
+                            
+                            ClickPattern.Click(Decimal.ToInt32(Repeat_count.Value));
+                        }
+                    }, token).Wait();
+            }
+
+            catch (AggregateException ae)
+            {
+                foreach (Exception e in ae.InnerExceptions)
+                    if (e is TaskCanceledException)
+                    {
+                        Console.WriteLine("Clicking canceled during initial delay: {0}", ((TaskCanceledException)e).Message);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Exception: " + e.GetType().Name);
+                    }                
+            }
+
+            finally
+            {
+                Button_start.Enabled = true;
+                Button_stop.Enabled = false;
+
+                source.Dispose();
+
+                this.WindowState = FormWindowState.Normal;
+                this.Activate();
+            }
+            
+        }
+
+        public void Stop()
+        {
+            Button_start.Enabled = true;
+            Button_stop.Enabled = false;
+
+            ClickPattern.source.Cancel();
+            
+            Console.WriteLine("Pattern stopped");
+
+            this.WindowState = FormWindowState.Normal;
+            this.Activate();
+        }
+
+        
     }
 }
