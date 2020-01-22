@@ -182,6 +182,11 @@
             0,
             0,
             0});
+            this.Repeat_count.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Repeat_count.Name = "Repeat_count";
             this.Repeat_count.Size = new System.Drawing.Size(56, 20);
             this.Repeat_count.TabIndex = 2;
