@@ -1,0 +1,52 @@
+09-Sep-20 18:50:32: New point added to the list (976, 413, 500)09-Sep-20 18:51:13: New point added to the list (1157, 525, 500)09-Sep-20 18:51:26: Clicking times : 5 sequence initiated09-Sep-20 18:51:26: ClickOnce sequence initiated09-Sep-20 18:51:27: ClickOnce sequence initiated09-Sep-20 18:51:29: ClickOnce sequence initiated09-Sep-20 18:51:31: ClickOnce sequence initiated09-Sep-20 18:51:33: ClickOnce sequence initiated09-Sep-20 18:53:55: New point added to the list (812, 409, 500)
+09-Sep-20 18:53:56: New point added to the list (780, 387, 500)
+09-Sep-20 18:53:58: New point added to the list (1205, 416, 500)
+09-Sep-20 19:25:38: New point added to the list (761, 640, 500)
+09-Sep-20 19:25:41: New point added to the list (1161, 711, 500)
+09-Sep-20 19:25:44: New point added to the list (1230, 618, 500)
+10-Sep-20 11:42:27: New point added to the list (767, 549, 500)
+10-Sep-20 11:42:28: New point added to the list (972, 595, 500)
+10-Sep-20 11:42:31: New point added to the list (693, 185, 500)
+10-Sep-20 11:42:32: New point added to the list (810, 191, 500)
+10-Sep-20 11:42:42: ClickingUntilStopped sequence initiated
+10-Sep-20 11:42:42: ClickOnce sequence initiated
+10-Sep-20 11:42:42: Clicking with coordinates
+10-Sep-20 11:42:42: Left clicked 972, 595
+10-Sep-20 11:42:43: Left clicked 693, 185
+10-Sep-20 11:42:43: Left clicked 810, 191
+10-Sep-20 11:42:44: ClickOnce sequence initiated
+10-Sep-20 11:42:44: Clicking with coordinates
+10-Sep-20 11:42:44: Left clicked 972, 595
+10-Sep-20 11:42:45: Left clicked 693, 185
+10-Sep-20 11:42:45: Left clicked 810, 191
+10-Sep-20 11:42:46: ClickOnce sequence initiated
+10-Sep-20 11:42:46: Clicking with coordinates
+10-Sep-20 11:42:46: Left clicked 972, 595
+10-Sep-20 11:42:47: Left clicked 693, 185
+10-Sep-20 11:42:47: Left clicked 810, 191
+10-Sep-20 11:42:48: ClickOnce sequence initiated
+10-Sep-20 11:42:48: Clicking with coordinates
+10-Sep-20 11:42:48: Left clicked 972, 595
+10-Sep-20 11:42:49: Left clicked 693, 185
+10-Sep-20 11:42:49: Left clicked 810, 191
+10-Sep-20 11:42:50: ClickOnce sequence initiated
+10-Sep-20 11:42:50: Clicking with coordinates
+10-Sep-20 11:42:50: Left clicked 972, 595
+10-Sep-20 11:42:51: Left clicked 693, 185
+10-Sep-20 11:42:51: Left clicked 810, 191
+10-Sep-20 11:42:52: ClickOnce sequence initiated
+10-Sep-20 11:42:52: Clicking with coordinates
+10-Sep-20 11:42:52: Left clicked 972, 595
+10-Sep-20 11:42:53: Left clicked 693, 185
+10-Sep-20 11:42:53: Left clicked 810, 191
+10-Sep-20 11:42:54: ClickOnce sequence initiated
+10-Sep-20 11:42:54: Clicking with coordinates
+10-Sep-20 11:42:54: Clicking canceled inside of patternПроизошла одна или несколько ошибок.
+10-Sep-20 11:43:01: ClickingUntilStopped sequence initiated
+10-Sep-20 11:43:01: ClickOnce sequence initiated
+10-Sep-20 11:43:01: Clicking with coordinates
+10-Sep-20 11:43:01: Clicking canceled inside of patternПроизошла одна или несколько ошибок.
+10-Sep-20 11:43:11: ClickingUntilStopped sequence initiated
+10-Sep-20 11:43:11: ClickOnce sequence initiated
+10-Sep-20 11:43:11: Clicking with coordinates
+10-Sep-20 11:43:11: Clicking canceled inside of patternПроизошла одна или несколько ошибок.

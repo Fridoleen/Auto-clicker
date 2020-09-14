@@ -220,7 +220,7 @@
             this.RepeatCheck.Text = "Repeat until stopped";
             this.RepeatCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.RepeatCheck.UseVisualStyleBackColor = true;
-            this.RepeatCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.RepeatCheck.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // Button_start
             // 
@@ -313,7 +313,7 @@
             this.Interval_m.Size = new System.Drawing.Size(45, 20);
             this.Interval_m.TabIndex = 2;
             this.Interval_m.Text = "0";
-            this.Interval_m.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.Interval_m.TextChanged += new System.EventHandler(this.TextBox6_TextChanged);
             // 
             // Interval_s
             // 
