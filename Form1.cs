@@ -24,10 +24,12 @@ namespace Auto_clicker
             }
             else if (Xpos.Text == "" || Ypos.Text == "")
             {
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Need two numbers!", this.Xpos, 2000);
             }
             else
@@ -41,7 +43,6 @@ namespace Auto_clicker
         private void MouseClicked(Point pt)
         {
             ClickPattern.AddPoint(pt.x, pt.y, Int32.Parse(Internal_interval.Text));
-            MessageWindow.Items.Add("Added point (" + pt.x + ", " + pt.y + ")");
             MouseInterceptor.OnClick -= MouseClicked;
             this.WindowState = FormWindowState.Normal;
             this.Activate();
@@ -69,26 +70,30 @@ namespace Auto_clicker
 
         private void YCoord_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Ypos.Text, out int sec))
+            if (!Int32.TryParse(Ypos.Text, out _))
             {
                 Ypos.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Ypos, 2000);
             }
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
+        private void TextBox6_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Interval_m.Text, out int sec))
+            if (!Int32.TryParse(Interval_m.Text, out _))
             {
                 Interval_m.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Interval_m, 2000);
             }
         }
@@ -98,7 +103,7 @@ namespace Auto_clicker
             MessageWindow.Items.Clear();
         }        
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (RepeatCheck.Checked) NRepeatCheck.Checked = false;
             else NRepeatCheck.Checked = true;
@@ -106,26 +111,30 @@ namespace Auto_clicker
         
         private void XCoord_TextChanged_1(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Xpos.Text, out int sec))
+            if (!Int32.TryParse(Xpos.Text, out _))
             {
                 Xpos.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Xpos, 2000);
             }
         }
 
         private void Delay_s_TextChanged(object sender, EventArgs e)
         {
-            if(! Int32.TryParse(Delay_s.Text, out int sec))
+            if(! Int32.TryParse(Delay_s.Text, out _))
             {
                 Delay_s.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Delay_s, 2000);
             }
         }
@@ -134,78 +143,90 @@ namespace Auto_clicker
 
         private void Delay_h_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Delay_h.Text, out int sec))
+            if (!Int32.TryParse(Delay_h.Text, out _))
             {
                 Delay_h.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Delay_h, 2000);
             }
         }
 
         private void Delay_m_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Delay_m.Text, out int sec))
+            if (!Int32.TryParse(Delay_m.Text, out _))
             {
                 Delay_m.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Delay_m, 2000);
             }
         }
 
         private void Interval_h_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Interval_h.Text, out int sec))
+            if (!Int32.TryParse(Interval_h.Text, out _))
             {
                 Interval_h.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Interval_h, 2000);
             }
         }
 
         private void Interval_s_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Interval_s.Text, out int sec))
+            if (!Int32.TryParse(Interval_s.Text, out _))
             {
                 Interval_s.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Interval_s, 2000);
             }
         }
 
         private void Interval_ms_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Interval_ms.Text, out int sec))
+            if (!Int32.TryParse(Interval_ms.Text, out _))
             {
                 Interval_ms.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Interval_ms, 2000);
             }
         }
 
         private void Internal_interval_TextChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(Internal_interval.Text, out int sec))
+            if (!Int32.TryParse(Internal_interval.Text, out _))
             {
                 Internal_interval.Text = "";
-                ToolTip tip = new ToolTip();
-                tip.IsBalloon = true;
-                tip.InitialDelay = 0;
-                tip.ShowAlways = true;
+                ToolTip tip = new ToolTip
+                {
+                    IsBalloon = true,
+                    InitialDelay = 0,
+                    ShowAlways = true
+                };
                 tip.Show("Must enter a number!", this.Internal_interval, 2000);
             }
         }
@@ -271,13 +292,13 @@ namespace Auto_clicker
                         {
                             Console.WriteLine("Unlimited clicking started");
                             
-                            ClickPattern.Click();
+                            ClickPattern.ClickUntilStopped();
                         }
                         else
                         {
                             Console.WriteLine("Limited clicking started");
                             
-                            ClickPattern.Click(Decimal.ToInt32(Repeat_count.Value));
+                            ClickPattern.ClickNTimes(Decimal.ToInt32(Repeat_count.Value));
                         }
                     }, token).Wait();
             }
@@ -285,9 +306,9 @@ namespace Auto_clicker
             catch (AggregateException ae)
             {
                 foreach (Exception e in ae.InnerExceptions)
-                    if (e is TaskCanceledException)
+                    if (e is TaskCanceledException exception)
                     {
-                        Console.WriteLine("Clicking canceled during initial delay: {0}", ((TaskCanceledException)e).Message);
+                        Console.WriteLine("Clicking canceled during initial delay: {0}", exception.Message);
                     }
                     else
                     {

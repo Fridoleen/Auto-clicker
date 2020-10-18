@@ -9,7 +9,7 @@ namespace Auto_clicker
 
     class ClickPattern
     {
-        private static List<TimePoint> clPattern;
+        private static readonly List<TimePoint> clPattern;
 
         public static CancellationTokenSource source = new CancellationTokenSource();
         private static CancellationToken universal_token = source.Token;
@@ -25,24 +25,27 @@ namespace Auto_clicker
         }
 
         public static void AddPoint(int _x, int _y, int _t)
-        {
-            
+        {            
             TimePoint newP = new TimePoint(_x, _y, _t);
             clPattern.Add(newP);
+            EventLog.RecordMessage($"New point added to the list ({_x}, {_y}, {_t})");
         }
 
         public static void ClearPattern()
         {
             clPattern.Clear();
+            EventLog.RecordMessage("Point list for pattern is clear now");
         }
+
+
 
         public static void ClickOnce()
         {
-            Console.WriteLine("ClickOnce initiated");
+            EventLog.RecordMessage("ClickOnce sequence initiated");
 
             if (clPattern.Count() > 0)
             {
-                Console.WriteLine("Clicking with coordinates");
+                EventLog.RecordMessage("Clicking with coordinates");
                 MouseSimulator.LClick(clPattern[0].x, clPattern[0].y);
                 try
                 {
@@ -50,27 +53,30 @@ namespace Auto_clicker
                     {
                         Task.Delay(clPattern[i - 1].t).ContinueWith(x =>
                              {
-                                 Console.WriteLine(@"Left clicked {0}, {1}", clPattern[i].x, clPattern[i].y);
+                                 EventLog.RecordMessage($"Left clicked {clPattern[i].x}, {clPattern[i].y}");
+
                                  MouseSimulator.LClick(clPattern[i].x, clPattern[i].y);
                              }, universal_token).Wait();
                     }
                 }
                 catch (AggregateException ae)
                 {
-                    Console.WriteLine("Clicking canceled inside of pattern");
+                    EventLog.RecordMessage("Clicking canceled inside of pattern " + ae.Message);
                 }
             }
             else
             {
-                Console.WriteLine("Just click without coordinates");
+                EventLog.RecordMessage("Just click without coordinates");
 
                 MouseSimulator.LClick();
             }
         }
 
-        public static void Click()
+
+
+        public static void ClickUntilStopped()
         {       
-            Console.WriteLine("Clicking_unlimited initiated");
+            EventLog.RecordMessage("ClickingUntilStopped sequence initiated");
             
             ClickOnce();
             try
@@ -85,20 +91,22 @@ namespace Auto_clicker
             }
             catch (AggregateException ae)
             {
-                Console.WriteLine("Unlimited clicking canceled");
+                EventLog.RecordMessage("Unlimited clicking canceled " + ae.Message);
             }
         }
 
-        public static void Click(int count)
+
+
+        public static void ClickNTimes(int count)
         {
-            Console.WriteLine("Clicking times : " + count + " initiated");
+            EventLog.RecordMessage("Clicking times : " + count + " sequence initiated");
             
             ClickOnce();
             try
             {
                 for (int i = 1; i < count; i++)
                 {
-                    Console.WriteLine(i + " pattern clicking initiated");
+                    EventLog.RecordMessage(i + " pattern clicking initiated");
 
                     Task.Delay(Period * i).ContinueWith(x =>
                    {
@@ -108,7 +116,7 @@ namespace Auto_clicker
             }
             catch (AggregateException ae)
             {
-                Console.WriteLine("Numerical clicking canceled");
+                EventLog.RecordMessage("Numerical clicking canceled " + ae.Message);
             }
 
         }
